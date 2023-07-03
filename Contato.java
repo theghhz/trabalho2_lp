@@ -1,37 +1,46 @@
-public class Contato {
+import java.io.Serializable;
+
+public class Contato implements Serializable{
     
     private String nome;
     private String telefone;
-    private String email;
+    private String endereco;
+    private String relacao;
 
-    public Contato(String nome, String telefone, String email) {
+    public Contato(String nome, String telefone, String endereco, String relacao) {
         this.nome = nome;
         this.telefone = telefone;
-        this.email = email;
+        this.endereco = endereco;
+        this.relacao = relacao;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public String getEmail() {
-        return email;
+    public String getRelacao() {
+        return relacao;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public String toString() {
+        return 
+            "-----------------------------" +
+            "Nome: " + nome + 
+            "\nTelefone: " + telefone + 
+            "\nEndereço: " + endereco +
+            "\nRelação: " + relacao + 
+            "-----------------------------" + 
+            "\n"
+            ;
     }
     
 }
