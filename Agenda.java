@@ -13,7 +13,7 @@ public class Agenda {
     private List<Contato> contatos;
     private int last;
 
-    private static final long serialVersionUID = 3L; // Controle da serialização dos arquivos 
+    private static final long serialVersionUID = 1L; // Controle da serialização dos arquivos 
 
     public Agenda() {
         contatos = new ArrayList<>();
@@ -51,6 +51,7 @@ public class Agenda {
             contatos.set(index,contato);
             System.out.println("Contato alterado com sucesso!");
         }
+        scanner.close();
         
     }
 
@@ -97,10 +98,11 @@ public class Agenda {
         } else {
             System.out.println("Contato não encontrado!");
         }
-
+        scanner.close();
     }
 
     public void busca() {
+
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("\n----- Buscar contato -----");
@@ -115,17 +117,8 @@ public class Agenda {
         } else {
             System.out.println("Contato não encontrado!");
         }
+        scanner.close();
     }
-
-
-    // public Contato buscarContato(String nome) {
-    //     for (Contato contato : contatos) {
-    //         if (contato.getNome().equalsIgnoreCase(nome)) {
-    //             return contato;
-    //         }
-    //     }
-    //     return null;
-    // }
 
     private int buscarContatoPorNome(String nome) {
         
@@ -138,6 +131,8 @@ public class Agenda {
 
     public void exibirContatos() {
 
+        Collections.sort(contatos, (c1, c2) -> c1.getNome().compareToIgnoreCase(c2.getNome())); // expressão lambda que organiza
+
         System.out.println("\n------ Lista de contatos ------");
         for (Contato contato : contatos) {
             System.out.println(contato.toString());
@@ -145,6 +140,8 @@ public class Agenda {
     }
 
     public void save(String arquivo) {
+
+        Collections.sort(contatos, (c1, c2) -> c1.getNome().compareToIgnoreCase(c2.getNome())); // expressão lambda que organiza
 
         try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(arquivo))){
             outputStream.writeObject(contatos);

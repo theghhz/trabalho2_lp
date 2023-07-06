@@ -33,12 +33,12 @@ public class Contato implements Serializable{
     @Override
     public String toString() {
         return 
-            "-----------------------------" +
+            "\n-----------------------------" + "\n" +
             "Nome: " + nome + 
             "\nTelefone: " + telefone + 
             "\nEndereço: " + endereco +
             "\nRelação: " + relacao + 
-            "-----------------------------" + 
+            "\n" + "-----------------------------" + 
             "\n"
             ;
     }
